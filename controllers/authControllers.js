@@ -1,16 +1,35 @@
 const User = require("../model/User");
 const jwt = require("jsonwebtoken");
 const bcrypt=require('bcrypt');
+const emailValidator = require('deep-email-validator');
 const { success, error } = require( "../utils/wrapper" );
 const signupControlles = async (req, res) => {
   const email = req.body.email;
   const password = req.body.password;
   const name = req.body.name;
   const phNumber = req.body.number;
+  async function isEmailValid(email) {
+    return emailValidator.validate(email)
+  }
   if (!email || !password || !name || !phNumber) {
     // return res.status(404).send("all fileds required");
     return res.send(error(403,("all fileds required")));
   }
+  const w= await isEmailValid(email);
+  // console.log(w.valid);
+  if(!w.valid){
+    // return res.status(404).send("email is not valid"); 
+    return res.send(error(402, "email is not valid"));
+  }
+  var string = phNumber.toString();
+  var z=string.length;
+    var number = Number.parseInt(string);
+    if (!Number.isNaN(number) || z<10 ) {
+return res.send(error(402,"Please enter valid number"))
+    }
+
+
+
   const olduser = await User.findOne({ email });
   if (olduser) {
     // return res.status(200).send("Already Exists");
@@ -26,14 +45,23 @@ const signupControlles = async (req, res) => {
   });
 //   res.status(200).send("user Created Succwssfully");
 console.log("success");
-    res.send(success(201, "user Created Succwssfully"));
+    res.send(success(201, "user Created Successfully"));
 };
 const loginController = async (req, res) => {
   const email = req.body.email;
   const password = req.body.password;
+  async function isEmailValid(email) {
+    return emailValidator.validate(email)
+  }
   if (!email || !password) {
     // return res.status(404).send("all fileds required");
       return res.send(error(402, "all fileds required"));
+  }
+  const w= await isEmailValid(email);
+  // console.log(w.valid);
+  if(!w.valid){
+    // return res.status(404).send("email is not valid"); 
+    return res.send(error(402, "email is not valid"));
   }
   const olduser = await User?.findOne({ email })?.select("+password");
   if (!olduser) {
@@ -57,6 +85,9 @@ const loginController = async (req, res) => {
   res.json(success(200, { token }));
 // res.send({token})
 };
+
+
+
 const generateAccesstoken = (data) => {
   try {
     const token = jwt.sign(data, process.env.accessToken, {
@@ -102,7 +133,7 @@ const refreshController = async (req, res) => {
 };
 const countController =async (req,res)=>{
 const user= await User.count();
-res.json(success(200, user));
+return res.json(success(200, user));
 }
 module.exports = {
   signupControlles,
