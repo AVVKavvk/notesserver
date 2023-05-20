@@ -1,34 +1,27 @@
 const User = require("../model/User");
 const jwt = require("jsonwebtoken");
-const bcrypt=require('bcrypt');
-const emailValidator = require('deep-email-validator');
-const { success, error } = require( "../utils/wrapper" );
+const bcrypt = require("bcrypt");
+const emailValidator = require("deep-email-validator");
+const { success, error } = require("../utils/wrapper");
 const signupControlles = async (req, res) => {
   const email = req.body.email;
   const password = req.body.password;
   const name = req.body.name;
   const phNumber = req.body.number;
-  async function isEmailValid(email) {
-    return emailValidator.validate(email)
-  }
+
   if (!email || !password || !name || !phNumber) {
     // return res.status(404).send("all fileds required");
-    return res.send(error(403,("all fileds required")));
+    return res.send(error(403, "all fileds required"));
   }
-  const w= await isEmailValid(email);
+
   // console.log(w.valid);
-  if(!w.valid){
-    // return res.status(404).send("email is not valid"); 
-    return res.send(error(402, "email is not valid"));
-  }
+
   var string = phNumber.toString();
-  var z=string.length;
-    var number = Number.parseInt(string);
-    if (!Number.isNaN(number) || z<10 ) {
-return res.send(error(402,"Please enter valid number"))
-    }
-
-
+  var z = string.length;
+  var number = Number.parseInt(string);
+  if (!Number.isNaN(number) || z < 10) {
+    return res.send(error(402, "Please enter valid number"));
+  }
 
   const olduser = await User.findOne({ email });
   if (olduser) {
@@ -36,37 +29,37 @@ return res.send(error(402,"Please enter valid number"))
     // return res.status(200).send("Already Exists");
     return res.send(error(402, "Already Exists"));
   }
-  const hashPassword=await bcrypt.hash(password,10);
+  const hashPassword = await bcrypt.hash(password, 10);
   await User.create({
     email,
     name,
-    password:hashPassword,
+    password: hashPassword,
     phNumber,
   });
-//   res.status(200).send("user Created Succwssfully");
-console.log("success");
-    res.send(success(201, "user Created Successfully"));
+  //   res.status(200).send("user Created Succwssfully");
+  console.log("success");
+  res.send(success(201, "user Created Successfully"));
 };
 const loginController = async (req, res) => {
   const email = req.body.email;
   const password = req.body.password;
- 
+
   if (!email || !password) {
     // return res.status(404).send("all fileds required");
-      return res.send(error(402, "all fileds required"));
+    return res.send(error(402, "all fileds required"));
   }
-  
+
   const olduser = await User?.findOne({ email })?.select("+password");
   if (!olduser) {
     // return res.status(404).send("user not found");
-      return res.send(error(404, "user not found"));
+    return res.send(error(404, "user not found"));
     //   return res.send(error(404, "user not found"));
   }
   // const verri = (password===olduser?.password);
   const verri = await bcrypt?.compare(password, olduser?.password);
   if (!verri) {
     // return res.status(401).send("Incorrect password");
-      return res.send(error(403, "Incorrect password"));
+    return res.send(error(403, "Incorrect password"));
   }
 
   const token = generateAccesstoken({ _id: olduser._id });
@@ -76,10 +69,8 @@ const loginController = async (req, res) => {
     secure: true,
   });
   res.json(success(200, { token }));
-// res.send({token})
+  // res.send({token})
 };
-
-
 
 const generateAccesstoken = (data) => {
   try {
@@ -90,7 +81,7 @@ const generateAccesstoken = (data) => {
     return token;
   } catch (e) {
     // return res.send(e.message);
-      return res.send(error(500, e.message));
+    return res.send(error(500, e.message));
   }
 };
 
@@ -102,7 +93,7 @@ const generateRefershtoken = (data) => {
 
     return token;
   } catch (e) {
-      return res.send(error(500, e.message));
+    return res.send(error(500, e.message));
     // return ressend(e.message);
   }
 };
@@ -112,7 +103,7 @@ const refreshController = async (req, res) => {
   // console.log(req.cookies);
   if (!refreshToken) {
     // return res.send("refresh token required");
-      return res.send(error(401, "refresh token required"));
+    return res.send(error(401, "refresh token required"));
   }
   try {
     const verri = jwt.verify(refreshToken, process.env.RefershToken);
@@ -121,16 +112,16 @@ const refreshController = async (req, res) => {
   } catch (e) {
     // return res.send("invaild refresh key");
 
-      return res.send(error(401, "invaild refresh key"));
+    return res.send(error(401, "invaild refresh key"));
   }
 };
-const countController =async (req,res)=>{
-const user= await User.count();
-return res.json(success(200, user));
-}
+const countController = async (req, res) => {
+  const user = await User.count();
+  return res.json(success(200, user));
+};
 module.exports = {
   signupControlles,
   loginController,
   refreshController,
-  countController
+  countController,
 };
