@@ -50,19 +50,12 @@ console.log("success");
 const loginController = async (req, res) => {
   const email = req.body.email;
   const password = req.body.password;
-  async function isEmailValid(email) {
-    return emailValidator.validate(email)
-  }
+ 
   if (!email || !password) {
     // return res.status(404).send("all fileds required");
       return res.send(error(402, "all fileds required"));
   }
-  const w= await isEmailValid(email);
-  // console.log(w.valid);
-  if(!w.valid){
-    // return res.status(404).send("email is not valid"); 
-    return res.send(error(402, "email is not valid"));
-  }
+  
   const olduser = await User?.findOne({ email })?.select("+password");
   if (!olduser) {
     // return res.status(404).send("user not found");
