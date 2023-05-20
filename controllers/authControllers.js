@@ -1,7 +1,6 @@
 const User = require("../model/User");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
-const emailValidator = require("deep-email-validator");
 const { success, error } = require("../utils/wrapper");
 const signupControlles = async (req, res) => {
   const email = req.body.email;
@@ -14,19 +13,10 @@ const signupControlles = async (req, res) => {
     return res.send(error(403, "all fileds required"));
   }
 
-  // console.log(w.valid);
-
-  var string = phNumber.toString();
-  var z = string.length;
-  var number = Number.parseInt(string);
-  if (!Number.isNaN(number) || z < 10) {
-    return res.send(error(402, "Please enter valid number"));
-  }
-
   const olduser = await User.findOne({ email });
   if (olduser) {
     // return res.status(200).send("Already Exists");
-    // return res.status(200).send("Already Exists");
+   
     return res.send(error(402, "Already Exists"));
   }
   const hashPassword = await bcrypt.hash(password, 10);

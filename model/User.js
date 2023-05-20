@@ -16,10 +16,10 @@ const userSchema = mongoose.Schema(
       type: String,
       required: true,
     },
-   
+
     phNumber: {
       type: Number,
-      required:true
+      required: true,
     },
   },
   {
