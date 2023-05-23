@@ -16,7 +16,7 @@ const signupControlles = async (req, res) => {
   const olduser = await User.findOne({ email });
   if (olduser) {
     // return res.status(200).send("Already Exists");
-   
+
     return res.send(error(402, "Already Exists"));
   }
   const hashPassword = await bcrypt.hash(password, 10);
@@ -109,9 +109,36 @@ const countController = async (req, res) => {
   const user = await User.count();
   return res.json(success(200, user));
 };
+const forgetPassword = async (req, res) => {
+  const email = req.body.email;
+  const password = req.body.password;
+  const Conpassword = req.body.confirmpassword;
+
+  if (!email || !password || !Conpassword) {
+    // return res.status(404).send("all fileds required");
+    return res.send(error(402, "all fileds required"));
+  }
+  if (password != Conpassword) {
+    // return res.status(404).send("all fileds required");
+    return res.send(error(402, "Both password must be same"));
+  }
+
+  const olduser = await User?.findOne({ email })?.select("+password");
+  if (!olduser) {
+    // return res.status(404).send("user not found");
+    return res.send(error(404, "user not found"));
+    //   return res.send(error(404, "user not found"));
+  }
+  const hashPassword = await bcrypt.hash(password, 10);
+  olduser.password = hashPassword;
+  await olduser.save();
+  res.send(success(200,"password Updated"));
+};
+
 module.exports = {
   signupControlles,
   loginController,
   refreshController,
   countController,
+  forgetPassword,
 };
