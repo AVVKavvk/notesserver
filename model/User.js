@@ -18,7 +18,7 @@ const userSchema = mongoose.Schema(
     },
 
     phNumber: {
-      type: Number,
+      type: String,
       required: true,
     },
   },
