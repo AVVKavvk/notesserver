@@ -27,7 +27,7 @@ const signupControlles = async (req, res) => {
     phNumber,
   });
   //   res.status(200).send("user Created Succwssfully");
-  console.log("success");
+  console.log(name);
   res.send(success(201, "user Created Successfully"));
 };
 const loginController = async (req, res) => {
