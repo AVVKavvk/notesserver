@@ -6,7 +6,7 @@ const app = express();
 const cors = require("cors");
 const authRouter = require("./routers/authRouter");
 const userRouter = require("./routers/userRouter");
-const morgan=require('morgan')
+const morgan = require("morgan");
 const cookie = require("cookie-parser");
 app.use(express.json({ limit: "10mb" }));
 app.use(morgan("common"));
@@ -23,6 +23,6 @@ app.get("/", (req, res) => {
   res.send("Hello World");
 });
 Dbconnect();
-app.listen(3001, () => {
+app.listen(30001, () => {
   console.log("Server is running on port 3001");
 });
