@@ -33,7 +33,7 @@ const signupControlles = async (req, res) => {
 const loginController = async (req, res) => {
   const email = req.body.email;
   const password = req.body.password;
-
+  console.log(email);
   if (!email || !password) {
     // return res.status(404).send("all fileds required");
     return res.send(error(402, "all fileds required"));
@@ -62,7 +62,7 @@ const loginController = async (req, res) => {
   // res.send({token})
 };
 
-const generateAccesstoken = (data) => {
+const generateAccesstoken = data => {
   try {
     const token = jwt.sign(data, process.env.accessToken, {
       expiresIn: "1y",
@@ -75,7 +75,7 @@ const generateAccesstoken = (data) => {
   }
 };
 
-const generateRefershtoken = (data) => {
+const generateRefershtoken = data => {
   try {
     const token = jwt.sign(data, process.env.RefershToken, {
       expiresIn: "1y",
@@ -132,7 +132,7 @@ const forgetPassword = async (req, res) => {
   const hashPassword = await bcrypt.hash(password, 10);
   olduser.password = hashPassword;
   await olduser.save();
-  res.send(success(200,"password Updated"));
+  res.send(success(200, "password Updated"));
 };
 
 module.exports = {
