@@ -23,8 +23,8 @@ app.get("/", (req, res) => {
   res.send("Hello World");
 });
 Dbconnect();
-app.listen(4003, () => {
-  console.log("Server is running on port 4003");
+app.listen(5012, () => {
+  console.log("Server is running on port 5012");
 });
 // app.listen(3001, () => {
 //   console.log("Server is running on port 3001");
