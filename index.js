@@ -8,6 +8,7 @@ const authRouter = require("./routers/authRouter");
 const userRouter = require("./routers/userRouter");
 const morgan = require("morgan");
 const cookie = require("cookie-parser");
+const PORT=process.env.PORT||4006
 app.use(express.json({ limit: "10mb" }));
 app.use(morgan("common"));
 app.use(
@@ -23,8 +24,8 @@ app.get("/", (req, res) => {
   res.send("Hello World");
 });
 Dbconnect();
-app.listen(5012, () => {
-  console.log("Server is running on port 5012");
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
 });
 // app.listen(3001, () => {
 //   console.log("Server is running on port 3001");
