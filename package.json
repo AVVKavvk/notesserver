@@ -22,7 +22,8 @@
     "mongoose": "^7.1.1",
     "morgan": "^1.10.0",
     "nodemon": "^2.0.22",
-    "react-jwt": "^1.1.8"
+    "react-jwt": "^1.1.8",
+    "telegraf": "^4.14.0"
   },
   "engines": {
     "node": ">=14 "
