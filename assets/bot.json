@@ -1,0 +1,183 @@
+[
+    {
+      "title": "colSum",
+      "code": "https://raw.githubusercontent.com/AVVKavvk/DSA/main/2DArray/colSum.cpp"
+    },
+    {
+      "title": "maxAndMinElement",
+      "code": "https://raw.githubusercontent.com/AVVKavvk/DSA/main/2DArray/maxAndMinElement.cpp"
+    },
+    {
+      "title": "rowSum",
+      "code": "https://raw.githubusercontent.com/AVVKavvk/DSA/main/2DArray/rowSum.cpp"
+    },
+    {
+      "title": "transposeOfMatrix",
+      "code": "https://raw.githubusercontent.com/AVVKavvk/DSA/main/2DArray/transposeOfMatrix.cpp"
+    },
+  
+    {
+      "title": "ReverseArray",
+      "code": "https://raw.githubusercontent.com/AVVKavvk/DSA/main/Array/ReverseArray.cpp"
+    },
+    {
+      "title": "extremeArrayPrint",
+      "code": "https://raw.githubusercontent.com/AVVKavvk/DSA/main/Array/extremeArrayPrint.cpp"
+    },
+    {
+      "title": "pairSum",
+      "code": "https://raw.githubusercontent.com/AVVKavvk/DSA/main/Array/pairSum.cpp"
+    },
+    {
+      "title": "printAllPair",
+      "code": "https://raw.githubusercontent.com/AVVKavvk/DSA/main/Array/printAllPair.cpp"
+    },
+    {
+      "title": "tripletSum",
+      "code": "https://raw.githubusercontent.com/AVVKavvk/DSA/main/Array/tripletSum.cpp"
+    },
+    {
+      "title": "BSTCreation",
+      "code": "https://raw.githubusercontent.com/AVVKavvk/DSA/main/BST/creation.cpp"
+    },
+    {
+      "title": "BSTSearching",
+      "code": "https://raw.githubusercontent.com/AVVKavvk/DSA/main/BST/searching.cpp"
+    },
+    {
+      "title": "countConversion",
+      "code": "https://raw.githubusercontent.com/AVVKavvk/DSA/main/DnC/countConversion.cpp"
+    },
+    {
+      "title": "mergeSort",
+      "code": "https://raw.githubusercontent.com/AVVKavvk/DSA/main/DnC/mergeSort.cpp"
+    },
+    {
+      "title": "quickSort",
+      "code": "https://raw.githubusercontent.com/AVVKavvk/DSA/main/DnC/quickSort.cpp"
+    },
+    {
+      "title": "buildHeap",
+      "code": "https://raw.githubusercontent.com/AVVKavvk/DSA/main/Heap/buildHeap.cpp"
+    },
+    {
+      "title": "HeapDeletion",
+      "code": "https://raw.githubusercontent.com/AVVKavvk/DSA/main/Heap/deletion.cpp"
+    },
+    {
+      "title": "heapSort",
+      "code": "https://raw.githubusercontent.com/AVVKavvk/DSA/main/Heap/heapSort.cpp"
+    },
+    {
+      "title": "heapify",
+      "code": "https://raw.githubusercontent.com/AVVKavvk/DSA/main/Heap/heapify.cpp"
+    },
+    {
+      "title": "HeapInsertion",
+      "code": "https://raw.githubusercontent.com/AVVKavvk/DSA/main/Heap/insertion.cpp"
+    },
+    {
+      "title": "binarySearch",
+      "code": "https://raw.githubusercontent.com/AVVKavvk/DSA/main/Recursion/binarySearch.cpp"
+    },
+    {
+      "title": "checkPalindrome",
+      "code": "https://raw.githubusercontent.com/AVVKavvk/DSA/main/Recursion/checkPalindrome.cpp"
+    },
+    {
+      "title": "climbStairs",
+      "code": "https://raw.githubusercontent.com/AVVKavvk/DSA/main/Recursion/climbStairs.cpp"
+    },
+    {
+      "title": "cutIntoSegment",
+      "code": "https://raw.githubusercontent.com/AVVKavvk/DSA/main/Recursion/cutIntoSegment.cpp"
+    },
+    {
+      "title": "findlastIndexOfChar",
+      "code": "https://raw.githubusercontent.com/AVVKavvk/DSA/main/Recursion/findlastIndexOfChar.cpp"
+    },
+    {
+      "title": "maxSumOfNonAdjencyElement",
+      "code": "https://raw.githubusercontent.com/AVVKavvk/DSA/main/Recursion/maxSumOfNonAdjencyElement.cpp"
+    },
+    {
+      "title": "printAllSubstring",
+      "code": "https://raw.githubusercontent.com/AVVKavvk/DSA/main/Recursion/printAllSubstring.cpp"
+    },
+    {
+      "title": "reverseString",
+      "code": "https://raw.githubusercontent.com/AVVKavvk/DSA/main/Recursion/reverseString.cpp"
+    },
+    {
+      "title": "subsequenceOfString",
+      "code": "https://raw.githubusercontent.com/AVVKavvk/DSA/main/Recursion/subsequenceOfString.cpp"
+    },
+    {
+      "title": "targetSum",
+      "code": "https://raw.githubusercontent.com/AVVKavvk/DSA/main/Recursion/targetSum.cpp"
+    },
+    {
+      "title": "TrieCreation",
+      "code": "https://raw.githubusercontent.com/AVVKavvk/DSA/main/Trie/creation.cpp"
+    },
+    {
+      "title": "TrieDeletion",
+      "code": "https://raw.githubusercontent.com/AVVKavvk/DSA/main/Trie/deletion.cpp"
+    },
+    {
+      "title": "TrieRemove",
+      "code": "https://raw.githubusercontent.com/AVVKavvk/DSA/main/Trie/remove.cpp"
+    },
+    {
+      "title": "butterfly",
+      "code": "https://raw.githubusercontent.com/AVVKavvk/DSA/main/basic(pattern.....)/butterfly.cpp"
+    },
+    {
+      "title": "fancyPattern",
+      "code": "https://raw.githubusercontent.com/AVVKavvk/DSA/main/basic(pattern.....)/faPa.cpp"
+    },
+    {
+      "title": "fancyPattern1",
+      "code": "https://raw.githubusercontent.com/AVVKavvk/DSA/main/basic(pattern.....)/fancyPattern1.cpp"
+    },
+    {
+      "title": "fancyPattern2",
+      "code": "https://raw.githubusercontent.com/AVVKavvk/DSA/main/basic(pattern.....)/fapa2.cpp"
+    },
+    {
+      "title": "fancyPattern3",
+      "code": "https://raw.githubusercontent.com/AVVKavvk/DSA/main/basic(pattern.....)/fapa3.cpp"
+    },
+    {
+      "title": "fancyPattern4",
+      "code": "https://raw.githubusercontent.com/AVVKavvk/DSA/main/basic(pattern.....)/fapa5.cpp"
+    },
+    {
+      "title": "fancyPattern5",
+      "code": "https://raw.githubusercontent.com/AVVKavvk/DSA/main/basic(pattern.....)/fapa6.cpp"
+    },
+    {
+      "title": "floydsTriangle",
+      "code": "https://raw.githubusercontent.com/AVVKavvk/DSA/main/basic(pattern.....)/floyd'sTriangle.cpp"
+    },
+    {
+      "title": "halfSolidDiamond",
+      "code": "https://raw.githubusercontent.com/AVVKavvk/DSA/main/basic(pattern.....)/halfSolidDiamond.cpp"
+    },
+    {
+      "title": "invertedNumericHollowHalfPyramid",
+      "code": "https://raw.githubusercontent.com/AVVKavvk/DSA/main/basic(pattern.....)/invertedNumericHollowHalfPyramid.cpp"
+    },
+    {
+      "title": "numericHollowHalfPyramid",
+      "code": "https://raw.githubusercontent.com/AVVKavvk/DSA/main/basic(pattern.....)/numericHollowHalfPyramid.cpp"
+    },
+    {
+      "title": "numericPalindromeEquilaterlPyramid",
+      "code": "https://raw.githubusercontent.com/AVVKavvk/DSA/main/basic(pattern.....)/numericPalindromeEquilaterlPyramid.cpp"
+    },
+    {
+      "title": "passcelTriangle",
+      "code": "https://raw.githubusercontent.com/AVVKavvk/DSA/main/basic(pattern.....)/passcelTriangle.cpp"
+    }
+  ]
