@@ -7,6 +7,7 @@ const signupControlles = async (req, res) => {
   const password = req.body.password;
   const name = req.body.name;
   const phNumber = req.body.number;
+  const isTrue=req.body.real;
 
   if (!email || !password || !name || !phNumber) {
     // return res.status(404).send("all fileds required");
@@ -19,16 +20,21 @@ const signupControlles = async (req, res) => {
 
     return res.send(error(402, "Already Exists"));
   }
-  const hashPassword = await bcrypt.hash(password, 10);
-  await User.create({
-    email,
-    name,
-    password: hashPassword,
-    phNumber,
-  });
+
+  if(isTrue){
+
+    const hashPassword = await bcrypt.hash(password, 10);
+    await User.create({
+      email,
+      name,
+      password: hashPassword,
+      phNumber,
+    });
+  }
   //   res.status(200).send("user Created Succwssfully");
-  console.log(name);
-  res.send(success(201, "user Created Successfully"));
+  // console.log(name);
+
+  res.send(success(201, "Enter Email for OTP"));
 };
 const loginController = async (req, res) => {
   const email = req.body.email;

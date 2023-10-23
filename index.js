@@ -7,6 +7,7 @@ const app = express();
 const cors = require("cors");
 const authRouter = require("./routers/authRouter");
 const userRouter = require("./routers/userRouter");
+const otpRouter = require("./routers/otpRouter");
 const morgan = require("morgan");
 const cookie = require("cookie-parser");
 // const PORT=process.env.PORT||4006
@@ -22,6 +23,7 @@ app.use(
 app.use(cookie());
 app.use("/auth", authRouter);
 app.use("/user", userRouter);
+app.use("/otp", otpRouter);
 app.get("/", (req, res) => {
   res.send("Hello World");
 });
