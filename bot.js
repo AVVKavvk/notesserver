@@ -31,8 +31,10 @@ module.exports= async ()=>{
       bot.command(`${item?.title}`, async function (ctx) {
         const response = await axios(`${item?.code}`);
         ctx.reply(response?.data);
-        ctx.reply("/start");
-        return;
+        setTimeout(() => {
+          ctx.reply("/start");
+          return;
+        }, 1500);
       });
     });
   }
