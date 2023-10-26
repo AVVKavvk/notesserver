@@ -4,8 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node ./index.js cross-env NODE_OPTIONS=--trace-deprecation"
+       "start": "node ./index.js node --trace-deprecation"
   },
   "keywords": [],
   "author": "",
