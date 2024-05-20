@@ -28,7 +28,7 @@ const notesUpdate = async (req, res) => {
 const getNotes = async (req, res) => {
   try {
     const subject_name = req.body.subject_name;
-    const AllNotes = await Notes.find({ subject_name });
+    const AllNotes = await Notes.find();
     return res.send(success(200, AllNotes));
   } catch (err) {
     return res.send(error(402, err.message));
@@ -54,7 +54,7 @@ const getPaper = async (req, res) => {
   try {
     const subject = req.body.subject;
 
-    const AllPaper = await Paper.find({ subject });
+    const AllPaper = await Paper.find();
     return res.send(success(200, AllPaper));
   } catch (err) {
     return res.send(error(402, err.message));
@@ -129,6 +129,29 @@ const getAllPaperForVerification = async (req, res) => {
     return res.send(error(402, err.message));
   }
 };
+
+const notesVerification = async (req, res) => {
+  try {
+    const _id = req.body.id;
+    const notes = await Notes.findOne({ _id });
+    if (!notes) {
+      return res.send(error(404, "Notes not found"));
+    }
+    notes.isVerified = true;
+    await notes.save();
+    return res.send(success(200, "Notes Verified Successfully"));
+  } catch (err) {
+    return res.send(error(500, err.message));
+  }
+};
+const getAllNotesForVerification = async (req, res) => {
+  try {
+    const AllNotes = await Notes.find({ isVerified: false });
+    return res.send(success(200, AllNotes));
+  } catch (err) {
+    return res.send(error(402, err.message));
+  }
+};
 module.exports = {
   notesUpdate,
   getNotes,
@@ -140,4 +163,6 @@ module.exports = {
   labVerification,
   paperVerification,
   getAllPaperForVerification,
+  notesVerification,
+  getAllNotesForVerification
 };

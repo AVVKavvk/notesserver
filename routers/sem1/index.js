@@ -9,6 +9,8 @@ const {
   labVerification,
   paperVerification,
   getAllPaperForVerification,
+  notesVerification,
+  getAllNotesForVerification
 } = require("../../controllers/sem1");
 const route = require("express").Router();
 
@@ -23,5 +25,8 @@ route.post("/verified/lab", labVerification);
 
 route.post("/verification/paper", getAllPaperForVerification);
 route.post("/verified/paper", paperVerification);
+
+route.post("/verification/notes", getAllNotesForVerification);
+route.post("/verified/notes", notesVerification);
 
 module.exports = route;

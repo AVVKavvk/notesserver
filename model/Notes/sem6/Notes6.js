@@ -14,6 +14,10 @@ const userSchema = mongoose.Schema(
     video_url: {
       type: String,
     },
+    isVerified: {
+      type: Boolean,
+      default: false,
+    },
   },
   {
     timestamps: true,
