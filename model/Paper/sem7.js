@@ -16,6 +16,10 @@ const userSchema = mongoose.Schema(
     },
     sem:{
       type:String
+    },
+    isVerified:{
+      type: Boolean,
+      default:false
     }
   },
   {

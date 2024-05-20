@@ -1,5 +1,5 @@
 const Notes = require("../../model/Notes/sem3/Notes3");
-const Paper = require('../../model/Paper/sem3')
+const Paper = require("../../model/Paper/sem3");
 const Labs = require("../../model/Labs/sem3");
 
 const { success, error } = require("../../utils/wrapper");
@@ -31,10 +31,9 @@ const getNotes = async (req, res) => {
     const AllNotes = await Notes.find({ subject_name });
     return res.send(success(200, AllNotes));
   } catch (err) {
-    return res.send(error(402,err.message))
+    return res.send(error(402, err.message));
   }
 };
-
 
 const updatePaper = async (req, res) => {
   try {
@@ -78,8 +77,53 @@ const getLab = async (req, res) => {
   try {
     const subject = req.body.subject;
 
-    const AllLabs = await Labs.find({ subject });
+    const AllLabs = await Labs.find();
     return res.send(success(200, AllLabs));
+  } catch (err) {
+    return res.send(error(402, err.message));
+  }
+};
+const labVerification = async (req, res) => {
+  try {
+    const _id = req.body.id;
+    const lab = await Labs.findOne({ _id });
+    if (!lab) {
+      return res.send(error(404, "Lab not found"));
+    }
+    lab.isVerified = true;
+    await lab.save();
+    return res.send(success(200, "Lab Verified Successfully"));
+  } catch (err) {
+    return res.send(error(500, err.message));
+  }
+};
+const getAllLabForVerification = async (req, res) => {
+  try {
+    const AllLabs = await Labs.find({ isVerified: false });
+    return res.send(success(200, AllLabs));
+  } catch (err) {
+    return res.send(error(402, err.message));
+  }
+};
+
+const paperVerification = async (req, res) => {
+  try {
+    const _id = req.body.id;
+    const paper = await Paper.findOne({ _id });
+    if (!paper) {
+      return res.send(error(404, "Paper not found"));
+    }
+    paper.isVerified = true;
+    await paper.save();
+    return res.send(success(200, "Paper Verified Successfully"));
+  } catch (err) {
+    return res.send(error(500, err.message));
+  }
+};
+const getAllPaperForVerification = async (req, res) => {
+  try {
+    const AllPaper = await Paper.find({ isVerified: false });
+    return res.send(success(200, AllPaper));
   } catch (err) {
     return res.send(error(402, err.message));
   }
@@ -91,4 +135,8 @@ module.exports = {
   getPaper,
   updateLab,
   getLab,
+  getAllLabForVerification,
+  labVerification,
+  paperVerification,
+  getAllPaperForVerification,
 };

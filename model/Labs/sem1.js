@@ -10,6 +10,10 @@ const userSchema = mongoose.Schema(
     subject: {
       type: String,
     },
+    isVerified:{
+      type: Boolean,
+      default:false
+    }
   },
   {
     timestamps: true,

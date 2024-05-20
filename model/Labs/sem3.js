@@ -4,12 +4,16 @@ const userSchema = mongoose.Schema(
     studentEmail: {
       type: String,
     },
-    link:{
+    link: {
       type: String,
-     },
-      subject:{
-        type:String
-      }
+    },
+    subject: {
+      type: String,
+    },
+    isVerified: {
+      type: Boolean,
+      default: false,
+    },
   },
   {
     timestamps: true,

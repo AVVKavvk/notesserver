@@ -14,9 +14,13 @@ const userSchema = mongoose.Schema(
     T3: {
       type: String,
     },
-    sem:{
-      type:String
-    }
+    sem: {
+      type: String,
+    },
+    isVerified: {
+      type: Boolean,
+      default: false,
+    },
   },
   {
     timestamps: true,
