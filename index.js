@@ -23,10 +23,9 @@ app.use(express.json({ limit: "10mb" }));
 // app.use(morgan("common"));
 app.use(
   cors({
-    origin: "https://vipinnotes.onrender.com/", // Allow only this origin
+    origin: "https://vipinnotes.onrender.com", // Allow only this origin, no trailing slash
     methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
     credentials: true, // Allow credentials
-    optionsSuccessStatus: 204,
     // origin: process.env.Client_URL,
   })
 );
