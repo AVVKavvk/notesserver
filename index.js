@@ -11,16 +11,12 @@ const otpRouter = require("./routers/otpRouter");
 const morgan = require("morgan");
 const cookie = require("cookie-parser");
 // const PORT=process.env.PORT||4006
-const sem1 = require('./routers/sem1')
-const sem2 = require('./routers/sem2')
-const sem3 = require('./routers/sem3')
-const sem4 = require('./routers/sem4')
-const sem5 = require('./routers/sem5')
-const sem6 = require('./routers/sem6')
-
-
-
-
+const sem1 = require("./routers/sem1");
+const sem2 = require("./routers/sem2");
+const sem3 = require("./routers/sem3");
+const sem4 = require("./routers/sem4");
+const sem5 = require("./routers/sem5");
+const sem6 = require("./routers/sem6");
 
 const PORT = 4006;
 app.use(express.json({ limit: "10mb" }));
@@ -36,13 +32,12 @@ app.use("/auth", authRouter);
 app.use("/user", userRouter);
 app.use("/otp", otpRouter);
 
-app.use("/sem1",sem1)
-app.use("/sem2",sem2)
-app.use("/sem3",sem3)
-app.use("/sem4",sem4)
-app.use("/sem5",sem5)
-app.use("/sem6",sem6)
-
+app.use("/sem1", sem1);
+app.use("/sem2", sem2);
+app.use("/sem3", sem3);
+app.use("/sem4", sem4);
+app.use("/sem5", sem5);
+app.use("/sem6", sem6);
 
 app.get("/", (req, res) => {
   res.send("Hello World");

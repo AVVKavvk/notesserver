@@ -19,8 +19,9 @@ const sendEmailController = expressAsyncHandler(async (req, res) => {
   var mailOptions = {
     from: process.env.SMTPEmail,
     to: email,
-    subject: "OTP form Elevate",
-    text: `Your OTP is: ${otp}`,
+    subject: "OTP form VipinNotes! Ultimate Academic, Career, and Personal Growth Platform for IIIT Pune Students",
+    text: `Your OTP is: ${otp} \n\nThanks for choosing VipinNotes\nRegards,\nVipin Kumawat`,
+    
   };
 
   transporter.sendMail(mailOptions, function (err, info) {
