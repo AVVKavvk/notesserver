@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-       "start": "node ./index.js node --trace-deprecation"
+    "start": "node ./index.js node --trace-deprecation"
   },
   "keywords": [],
   "author": "",
