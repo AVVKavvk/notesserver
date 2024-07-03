@@ -17,15 +17,16 @@ const sem3 = require("./routers/sem3");
 const sem4 = require("./routers/sem4");
 const sem5 = require("./routers/sem5");
 const sem6 = require("./routers/sem6");
-
+const ratingRouter = require("./routers/ratingRouter");
 const PORT = 4006;
 app.use(express.json({ limit: "10mb" }));
 // app.use(morgan("common"));
 app.use(
   cors({
-    origin: "https://vipinnotes.onrender.com", // Allow only this origin, no trailing slash
+    // origin: "http://localhost:3000",
+     origin: "https://vipinnotes.onrender.com",
     methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
-    credentials: true, // Allow credentials
+    credentials: true,
     // origin: process.env.Client_URL,
   })
 );
@@ -40,10 +41,13 @@ app.use("/sem3", sem3);
 app.use("/sem4", sem4);
 app.use("/sem5", sem5);
 app.use("/sem6", sem6);
+app.use("/rating", ratingRouter);
+
 
 app.get("/", (req, res) => {
   res.send("Hello World");
 });
+
 Dbconnect();
 
 Bot();

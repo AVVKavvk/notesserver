@@ -20,10 +20,10 @@ const logger = async (req, res, next) => {
     // console.log("eeeeeeeeeeeeeeeeeeeeeeeee");
     const user = await User.findById(req._id);
     if (!user) {
-      return res.send(error(404, "User not found It's middleware call"));
+      return res.send(error(404, "User not found "));
       // return res.send("User not found It's middleware call");
     }
-    console.log("vipin");
+    // console.log("vipin");
     next();
   } catch (e) {
     // console.log(e);
