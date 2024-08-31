@@ -7,7 +7,7 @@ const signupControlles = async (req, res) => {
   const password = req.body.password;
   const name = req.body.name;
   const phNumber = req.body.number;
-  const isTrue=req.body.real;
+  const isTrue = req.body.real;
 
   if (!email || !password || !name || !phNumber) {
     // return res.status(404).send("all fileds required");
@@ -21,8 +21,7 @@ const signupControlles = async (req, res) => {
     return res.send(error(402, "Already Exists"));
   }
 
-  if(isTrue){
-
+  if (isTrue) {
     const hashPassword = await bcrypt.hash(password, 10);
     await User.create({
       email,
@@ -119,7 +118,7 @@ const forgetPassword = async (req, res) => {
   const email = req.body.email;
   const password = req.body.password;
   const Conpassword = req.body.confirmpassword;
-
+  const isTrue = req.body.real;
   if (!email || !password || !Conpassword) {
     // return res.status(404).send("all fileds required");
     return res.send(error(402, "all fileds required"));
@@ -135,10 +134,14 @@ const forgetPassword = async (req, res) => {
     return res.send(error(404, "user not found"));
     //   return res.send(error(404, "user not found"));
   }
-  const hashPassword = await bcrypt.hash(password, 10);
-  olduser.password = hashPassword;
-  await olduser.save();
-  res.send(success(200, "password Updated"));
+
+  if (isTrue) {
+    const hashPassword = await bcrypt.hash(password, 10);
+    olduser.password = hashPassword;
+    await olduser.save();
+    res.send(success(200, "password updated"));
+  }
+  res.send(success(201, "Enter Email for OTP"));
 };
 
 module.exports = {
