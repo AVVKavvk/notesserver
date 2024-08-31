@@ -7,6 +7,10 @@ const isAdminMiddleware = async (req, res, next) => {
     const adminEmail = req.body.adminEmail;
     const password = req.body.adminPassword;
 
+    // console.log(token);
+    // console.log(adminEmail);
+    // console.log(password);
+    
     if (!adminEmail || !password) {
       return res.send(error(402, "All filed required"));
     }

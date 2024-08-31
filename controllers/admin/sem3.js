@@ -28,7 +28,15 @@ const updatelabs = async (req, res) => {
     return res.send(error(402, err.message));
   }
 };
-
+const deleteLabs = async (req, res) => {
+  try {
+    const id = req.body.id;
+    const lab = await Labs.findByIdAndDelete({ _id: id });
+    return res.send(success(200, lab));
+  } catch (err) {
+    return res.send(error(402, err.message));
+  }
+};
 const getNotes = async (req, res) => {
   try {
     const notes = await Notes.find({ isVerified: false });
@@ -53,6 +61,15 @@ const updateNotes = async (req, res) => {
   }
 };
 
+const deleteNotes = async (req, res) => {
+  try {
+    const id = req.body.id;
+    const notes = await Notes.findByIdAndDelete({_id:id});
+    return res.send(success(200, notes));
+  } catch (err) {
+    return res.send(error(402, err.message));
+  }
+};
 const getpapers = async (req, res) => {
   try {
     const papers = await Paper.find({ isVerified: false });
@@ -79,11 +96,23 @@ const updatepapers = async (req, res) => {
     return res.send(error(402, err.message));
   }
 };
+const deletePapers = async (req, res) => {
+  try {
+    const id = req.body.id;
+    const paper = await Paper.findByIdAndDelete({ _id: id });
+    return res.send(success(200, paper));
+  } catch (err) {
+    return res.send(error(402, err.message));
+  }
+};
 module.exports = {
   getpapers,
   updatepapers,
+  deletePapers,
   getNotes,
   updateNotes,
+  deleteNotes,
   getlabs,
   updatelabs,
+  deleteLabs
 };

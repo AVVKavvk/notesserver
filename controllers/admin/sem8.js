@@ -27,7 +27,17 @@ const updatepapers = async (req, res) => {
     return res.send(error(402, err.message));
   }
 };
+const deletePapers = async (req, res) => {
+  try {
+    const id = req.body.id;
+    const paper = await Paper.findByIdAndDelete({ _id: id });
+    return res.send(success(200, paper));
+  } catch (err) {
+    return res.send(error(402, err.message));
+  }
+};
 module.exports = {
   getpapers,
   updatepapers,
+  deletePapers
 };
