@@ -3,5 +3,5 @@ const isAdminMiddleware = require("../../middleware/isAdmin");
 const route = require("express").Router();
 route.post("/", isAdminMiddleware, createAdmin);
 route.delete("/user", isAdminMiddleware, deleteUser);
-route.get("/users", isAdminMiddleware, getUsers);
+route.post("/users", isAdminMiddleware, getUsers);
 module.exports = route;

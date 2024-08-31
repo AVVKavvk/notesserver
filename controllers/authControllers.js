@@ -63,7 +63,7 @@ const loginController = async (req, res) => {
     httponly: true,
     secure: true,
   });
-  res.json(success(200, { token }));
+  return res.json(success(200, { token }));
   // res.send({token})
 };
 
@@ -139,9 +139,9 @@ const forgetPassword = async (req, res) => {
     const hashPassword = await bcrypt.hash(password, 10);
     olduser.password = hashPassword;
     await olduser.save();
-    res.send(success(200, "password updated"));
+    return res.send(success(200, "password updated"));
   }
-  res.send(success(201, "Enter Email for OTP"));
+  return res.send(success(201, "Enter Email for OTP"));
 };
 
 module.exports = {

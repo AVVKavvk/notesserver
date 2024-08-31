@@ -25,7 +25,7 @@ const getUsers = async (req, res) => {
     }
     const users = await User.find().sort({ _id: -1 }).limit(number);
 
-    return res.status(200).json(users);
+    return res.send(success(200, users));
   } catch (err) {
     return res.send(error(402, err.message));
   }

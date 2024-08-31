@@ -10,13 +10,13 @@ const {
 
 const isAdminMiddleware = require("../../middleware/isAdmin");
 
-route.get("/notes", isAdminMiddleware, getNotes);
+route.post("/notes", isAdminMiddleware, getNotes);
 route.put("/notes", isAdminMiddleware, updateNotes);
 
-route.get("/labs", isAdminMiddleware, getlabs);
+route.post("/labs", isAdminMiddleware, getlabs);
 route.put("/labs", isAdminMiddleware, updatelabs);
 
-route.get("/papers", isAdminMiddleware, getpapers);
+route.post("/papers", isAdminMiddleware, getpapers);
 route.put("/papers", isAdminMiddleware, updatepapers);
 
 module.exports = route;
