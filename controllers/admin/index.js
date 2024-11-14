@@ -76,10 +76,28 @@ const updateUserName = async (req, res) => {
     return res.send(error(402, err.message));
   }
 };
+
+const findUserByEmail = async (req,res)=>{
+
+  try {
+    const email = req.body.email;
+
+    if (!email || typeof email !== "string" || email == "") {
+      return res.send(error(402, "email is not vaild"));
+    }
+    const query = { email: { $regex: email, $options: "i" } };
+    const users = await User.find(query);
+    return res.send(success(200, users));
+
+  } catch (err) {
+    return res.send(error(402, err.message));
+  }
+}
 module.exports = {
   createAdmin,
   getUsers,
   deleteUser,
   findUsersByName,
   updateUserName,
+  findUserByEmail
 };
