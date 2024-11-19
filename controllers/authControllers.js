@@ -63,7 +63,7 @@ const loginController = async (req, res) => {
     httponly: true,
     secure: true,
   });
-  return res.json(success(200, { token }));
+  return res.json(success(200, { token:token, user:olduser }));
   // res.send({token})
 };
 
@@ -144,10 +144,29 @@ const forgetPassword = async (req, res) => {
   return res.send(success(201, "Enter Email for OTP"));
 };
 
+const getUserDetails = async (req,res)=>{
+  try {
+    const email = req.body.email
+
+    if (!email) {
+      return res.json(error(402, "email is required"));
+    }
+  
+    const olduser = await User?.findOne({ email })?.select("+password");
+    if (!olduser) {
+      return res.json(error(404, "user not found"));
+    }
+
+    return res.json(success(200, {user:olduser}))
+  } catch (err) {
+    return res.json(error(402, err.message));
+  }
+}
 module.exports = {
   signupControlles,
   loginController,
   refreshController,
   countController,
   forgetPassword,
+  getUserDetails
 };
