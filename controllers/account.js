@@ -23,7 +23,7 @@ const uploadImageToCloudinary = async (req,res)=>{
     
     olduser.image = cloudinary_url.url
     await olduser.save()    
-    return res.json(success(200, "Image uploaded"));
+    return res.json(success(200, {message: "Image uploaded", user_image:cloudinary_url.url}));
     
   } catch (err) {
     return res.json(error(402, err.message));
