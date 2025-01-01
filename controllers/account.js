@@ -43,11 +43,18 @@ const updateBasicDetails = async (req, res) => {
       return res.json(error(404, "User not found"));
     }
 
-    if (others) {
-      const updatedOthers = Array.isArray(olduser.others) ? [...olduser.others, ...others] : [...others];
-      
-      olduser.others = updatedOthers;
+    if (others && others.length > 0) {
+      const validOthers = others.filter(item => item !== null && item !== undefined && item.trim() !== "");
+      if (validOthers.length > 0) { 
+        const updatedOthers = Array.isArray(olduser.others) 
+          ? [...olduser.others, ...validOthers] 
+          : [...validOthers];
+          
+        olduser.others = updatedOthers;
+      }
     }
+    
+    
 
     if (sem) {
       olduser.sem = sem;
