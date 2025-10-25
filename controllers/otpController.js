@@ -14,13 +14,13 @@ const transporter = nodemailer.createTransport({
 });
 const sendEmailController = expressAsyncHandler(async (req, res) => {
   const email = req?.body?.email;
-  // console.log(email);
 
   const otp = otpGenerator.generate(6, {
     upperCaseAlphabets: true,
     specialChars: true,
   });
-  var mailOptions = {
+
+  const mailOptions = {
     from: process.env.SMTPEmail,
     to: email,
     subject:
@@ -28,15 +28,17 @@ const sendEmailController = expressAsyncHandler(async (req, res) => {
     text: `Your OTP is: ${otp} \n\nThanks for choosing VipinNotes\nRegards,\nVipin Kumawat`,
   };
 
-  transporter.sendMail(mailOptions, function (err, info) {
-    if (err) {
-      return res.send(error(402, { err }));
-    } else {
-      return res.send(
-        success(200, { message: "Email sent successfully!", otp: otp })
-      );
-    }
-  });
+  try {
+    // Convert callback to promise using await
+    const info = await transporter.sendMail(mailOptions);
+
+    return res.send(
+      success(200, { message: "Email sent successfully!", otp: otp })
+    );
+  } catch (err) {
+    console.error("Email error:", err);
+    return res.send(error(402, { message: "Failed to send email", err }));
+  }
 });
 
 module.exports = {
