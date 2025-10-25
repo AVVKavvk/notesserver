@@ -4,7 +4,7 @@ const nodemailer = require("nodemailer");
 const { success, error } = require("../utils/wrapper");
 const transporter = nodemailer.createTransport({
   host: process.env.Host,
-  port: process.envSMTPPort,
+  port: process.env.SMTPPort || 587,
   auth: {
     user: process.env.SMTPEmail,
     pass: process.env.SMTPPass,
