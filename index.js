@@ -30,12 +30,15 @@ const adminSem7Router = require("./routers/admin/sem7");
 const adminSem8Router = require("./routers/admin/sem8");
 const accountRouter = require("./routers/account");
 
+const dev = process.env.ENV_DEV === "dev" ? true : false;
+console.log("Type", dev);
+
 const PORT = 4006;
 app.use(express.json({ limit: "10mb" }));
 app.use(morgan("common"));
 app.use(
   cors({
-    origin: ["http://localhost:3000", "https://vipinnotes.onrender.com"],
+    origin: dev ? "http://localhost:3000" : "https://vipinnotes.onrender.com",
     methods: ["GET", "HEAD", "PUT", "PATCH", "POST", "DELETE"],
   })
 );
@@ -72,7 +75,6 @@ app.get("/", (req, res) => {
 
 Dbconnect();
 
-const dev = process.env.ENV_DEV === "dev" ? true : false;
 if (dev) {
   app.listen(3001, () => {
     console.log("Server is running on port 3001");
