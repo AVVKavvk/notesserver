@@ -1,6 +1,6 @@
 const express = require("express");
 const dotenv = require("dotenv");
-dotenv.config("./.env");
+require("dotenv").config();
 const Dbconnect = require("./Dbconnect");
 const Bot = require("./bot");
 const app = express();
@@ -28,7 +28,7 @@ const adminSem5Router = require("./routers/admin/sem5");
 const adminSem6Router = require("./routers/admin/sem6");
 const adminSem7Router = require("./routers/admin/sem7");
 const adminSem8Router = require("./routers/admin/sem8");
-const accountRouter = require('./routers/account')
+const accountRouter = require("./routers/account");
 
 const PORT = 4006;
 app.use(express.json({ limit: "10mb" }));
@@ -65,7 +65,7 @@ app.use("/sem6admin", adminSem6Router);
 app.use("/sem7admin", adminSem7Router);
 app.use("/sem8admin", adminSem8Router);
 
-app.use("/account",accountRouter)
+app.use("/account", accountRouter);
 
 app.get("/", (req, res) => {
   res.send("Hello World");
