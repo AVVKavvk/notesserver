@@ -36,14 +36,15 @@ console.log("Type", dev);
 const PORT = 4006;
 app.use(express.json({ limit: "10mb" }));
 app.use(morgan("common"));
-app.use(
-  cors({
-    origin: dev ? "http://localhost:3000" : "https://vipinnotes.onrender.com",
-    methods: ["GET", "HEAD", "PUT", "PATCH", "POST", "DELETE"],
-    credentials: true,
-  })
-);
-app.options("*", cors());
+const corsOptions = {
+  origin: dev ? "http://localhost:3000" : "https://vipinnotes.onrender.com",
+  methods: ["GET", "HEAD", "PUT", "PATCH", "POST", "DELETE", "OPTIONS"],
+  allowedHeaders: ["Content-Type", "Authorization"],
+  credentials: true,
+};
+
+app.use(cors(corsOptions));
+app.options("*", cors(corsOptions));
 
 app.use(cookie());
 app.use("/auth", authRouter);
