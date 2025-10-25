@@ -39,8 +39,10 @@ app.use(morgan("common"));
 const corsOptions = {
   origin: dev ? "http://localhost:3000" : "https://vipinnotes.onrender.com",
   methods: ["GET", "HEAD", "PUT", "PATCH", "POST", "DELETE", "OPTIONS"],
-  allowedHeaders: ["Content-Type", "Authorization"],
+  allowedHeaders: ["Content-Type", "Authorization", "X-Requested-With"], // Add this!
   credentials: true,
+  preflightContinue: false,
+  optionsSuccessStatus: 204,
 };
 
 app.use(cors(corsOptions));
