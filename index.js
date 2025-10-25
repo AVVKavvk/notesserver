@@ -40,6 +40,7 @@ app.use(
   cors({
     origin: dev ? "http://localhost:3000" : "https://vipinnotes.onrender.com",
     methods: ["GET", "HEAD", "PUT", "PATCH", "POST", "DELETE"],
+    credentials: true,
   })
 );
 app.options("*", cors());
