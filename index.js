@@ -35,13 +35,12 @@ app.use(express.json({ limit: "10mb" }));
 app.use(morgan("common"));
 app.use(
   cors({
-    // origin: "http://localhost:3000",
-    origin: "https://vipinnotes.onrender.com",
-    methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
-    credentials: true,
-    // origin: process.env.Client_URL,
+    origin: ["http://localhost:3000", "https://vipinnotes.onrender.com"],
+    methods: ["GET", "HEAD", "PUT", "PATCH", "POST", "DELETE"],
   })
 );
+app.options("*", cors());
+
 app.use(cookie());
 app.use("/auth", authRouter);
 app.use("/user", userRouter);
@@ -73,11 +72,14 @@ app.get("/", (req, res) => {
 
 Dbconnect();
 
-Bot();
-app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
-});
-
-// app.listen(3001, () => {
-//   console.log("Server is running on port 3001");
-// });
+const dev = process.env.ENV_DEV === "dev" ? true : false;
+if (dev) {
+  app.listen(3001, () => {
+    console.log("Server is running on port 3001");
+  });
+} else {
+  Bot();
+  app.listen(PORT, () => {
+    console.log(`Server is running on port ${PORT}`);
+  });
+}
