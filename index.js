@@ -32,11 +32,11 @@ const accountRouter = require("./routers/account");
 
 const PORT = 4006;
 app.use(express.json({ limit: "10mb" }));
-// app.use(morgan("common"));
+app.use(morgan("common"));
 app.use(
   cors({
-    // origin: "http://localhost:3000",
-    origin: "https://vipinnotes.onrender.com",
+    origin: "http://localhost:3000",
+    // origin: "https://vipinnotes.onrender.com",
     methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
     credentials: true,
     // origin: process.env.Client_URL,
