@@ -37,7 +37,7 @@ const PORT = 4006;
 app.use(express.json({ limit: "10mb" }));
 app.use(morgan("common"));
 const corsOptions = {
-  origin: "*",
+  origin: dev ? "http://localhost:3000" : "https://vipinnotes.onrender.com",
   methods: ["GET", "HEAD", "PUT", "PATCH", "POST", "DELETE", "OPTIONS"],
   allowedHeaders: ["Content-Type", "Authorization", "X-Requested-With"], // Add this!
   credentials: true,
