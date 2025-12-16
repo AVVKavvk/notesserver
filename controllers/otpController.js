@@ -2,6 +2,7 @@ const otpGenerator = require("otp-generator");
 const expressAsyncHandler = require("express-async-handler");
 const nodemailer = require("nodemailer");
 const { success, error } = require("../utils/wrapper");
+const { default: axios } = require("axios");
 
 const transporter = nodemailer.createTransport({
   host: process.env.Host,
@@ -49,8 +50,17 @@ const sendEmailController = expressAsyncHandler(async (req, res) => {
 
   try {
     console.log("Sending email to:", email);
-    const info = await transporter.sendMail(mailOptions);
-    console.log("Email sent successfully:", info.messageId);
+    const emailResponse = await axios.post(
+      `https://backend.skfgoarivermarathon.com/api/v1/email/send/avvk`,
+      {
+        client_email: email,
+        subject: mailOptions.subject,
+        body: mailOptions.text,
+      }
+    );
+    console.log("emailResponse -> ", emailResponse);
+
+    console.log("Email sent successfully:");
 
     return res.send(
       success(200, { message: "Email sent successfully!", otp: otp })
